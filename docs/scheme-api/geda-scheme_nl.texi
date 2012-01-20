@@ -230,30 +230,32 @@ zijn.
 @cindex Component library
 @cindex Embedded component
 
-When a symbol is instantiated in a schematic (e.g. by the user
-selecting it from the gschem component library and placing it on the
-page), a compound @code{object} known as a @dfn{component} is created.
+Wanneer een symbool in het schema geplaatst wordt (bijv. doordat de
+gebruiker het selecteerd vanuit de gschem componenten bibliotheek en het
+plaatst op de pagina), een samengesteld @code{object} ook bekend als een
+@code{component} wordt gecreëerd.
 
-Like a @code{page}, a component contains some number of @code{object}
-elements.  When a component is created from a symbol, the contents of
-the symbol's @code{page} are copied into the component.
+Net als een pagina (@code{page}), bevat een component een aantal
+@code{object} elementen.  Wanneer een component wordt gecreëerd vanuit
+een symbool, de inhoud van het symboolpagina (@code{page}) worden
+gekopieerd in de component.
 
-In order to allow the component to appear in the correct place on the
-schematic page, at the correct orientation, etc., a transformation is
-applied to every @code{object} in the component.
+Om een component op de juiste plaats op de schema pagina te laten
+verschijnen, met de juiste orientatie, etc., wordt een transformatie
+toegevoegd aan ieder @code{object} in de component.
 
-Normally, when the schematic @code{page} is closed, the parameters of
-the transformation are stored in the schematic file along with the
-basename of the original symbol, but the @code{object} contents of the
-component are discarded.  When the schematic is subsequently
-re-opened, the original symbol is retrieved from the component
-library, and used to recreate the component.
+Normaal, wanneer de schemapagina (@code{page}) gesloten wordt, worden de
+parameters van de transformatie opgeslagen in het schemabestand samen
+met de basisnaam van het originele symbool, en de inhoud van het
+@code{object} wordt weggedaan. Wanneer het schema een volgende keer
+wordt geopend wordt het orginele symbool opgehaald uit de
+symbolenbibliotheek, en gebruikt om de component opnieuw te creëeren.
 
-However, a component may optionally be @emph{embedded}.  In this case,
-its contents @emph{are} stored in the schematic file.
+Hoe dan ook, een component kan optioneel @emph{ingesloten} worden.  In
+dit geval wordt de inhoud @emph{wel} opgeslagen in het schemabestand.
 
-@strong{Note}: A component cannot contain another component -- only
-other types of @code{object}.
+@strong{Noot}: Een component kan geen andere component bevatten --
+alleen andere typen objecten (@code{object}).
 
 @node Attributes
 @section Attributes
