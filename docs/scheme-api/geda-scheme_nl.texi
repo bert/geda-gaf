@@ -317,35 +317,36 @@ Bijvoorbeeld, een zwevend @samp{documentation=@var{url}} attribuut in
 een symbool verteld gschem's @strong{Help → Component Documentatie}
 commando waar de datasheet van de component gevonden kan worden.
 
-@node Coordinate system
-@section Coordinate system
+@node Coordinaten systeem
+@section Coordinaten systeem
 
-gEDA documents use a @dfn{coordinate system} (internally referred to
-as `world' coordinates) with coordinates increasing upwards and to the
-right (i.e. a conventional right-handed Cartesian coordinate
-system).
+gEDA documenten gebruiken een @dfn{coordinaten systeem} (intern 'wereld'
+coordinaten genoemd) met coordinaten die toenemen naar boven en naar
+rechts (dit is een conventioneel rechterhand Cartesiaans coordinaten
+systeem).
 
-Although all coordinates may be positive or negative, gschem only
-displays objects with positive coordinates (i.e. in the upper right
-quadrant of the coordinate system).  It is therefore recommended to
-use only positive coordinates.
+Alhoewel alle coordinaten positief en negatief mogen zijn, vertoond
+gschem alleen objecten met positive coordinaten (dit is in het
+rechterbovenkwadrant van het coordinatensysteem). Het is hierom
+aanbevolen om alleen positiven coordinaten te gebruiken.
 
-In the Scheme API, the coordinate of a point is expressed in the format:
+In de Scheme API, worden de coordinate van een punt uitgedrukt in het
+formaat:
 
 @example
 (x . y)
 @end example
 
-and a set of @dfn{bounds} (i.e. a rectangular area in the document
-plane) is expressed in the format:
+en een set @dfn{omhullingen} (dit is een rechthoekig oppervlak in het
+document vlak) uitgedrukt in het formaat:
 
 @example
-((left . top) . (right . bottom))
+((links . boven) . (rechts . onder))
 @end example
 
-where @code{left} is the smaller x coordinate, @code{right} is the
-larger x coordinate, and @code{bottom} and @code{top} are respectively
-the smaller and larger y coordinates.
+waar @code{links} de kleinste x coordinaat is, @code{rechts} de grootste
+x coordinaat is, en @code{onder} en @code{boven} zijn respectievelijk
+de kleinste en de grootste y coordinaten.
 
 @node Kern API Referentie
 @chapter Core API Reference
