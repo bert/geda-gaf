@@ -349,17 +349,17 @@ x coordinaat is, en @code{onder} en @code{boven} zijn respectievelijk
 de kleinste en de grootste y coordinaten.
 
 @node Kern API Referentie
-@chapter Core API Reference
+@chapter Kern API Referentie
 
-The Scheme modules and functions described in this chapter are
-primitive operations for working with schematics and symbols, and are
-available to be used in all gEDA applications.
+De Scheme modules en functies die in dit hoofdstuk beschreven worden
+zijn primitieve opertaties voor het werken met schema's en symbolen, en
+zijn beschikbaar om in alle gEDA applikaties gebruikt te worden.
 
 @menu
-* Core page functions::
-* Core object functions::
-* Core attribute functions::
-* System information::
+* Kern pagina functies::
+* Kern object functies::
+* Kern attribuut functies::
+* Systeem informatie::
 @end menu
 
 @node Core page functions
