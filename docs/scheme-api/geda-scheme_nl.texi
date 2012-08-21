@@ -262,61 +262,60 @@ alleen andere typen objecten (@code{object}).
 @cindex Attribute
 @cindex Attribute format
 
-A gEDA user is able to annotate schematic elements with additional
-data, such as footprints for components or net names for nets.  This
-is carried out using @dfn{attributes}.
+Een gEDA gebruikte kan schematische elementen met toegevoegde data
+annoteren, zoals voetafdrukken voor componenten of netnamen voor netten.
+Dit wordt uitgevoerd door gebruik van attributen (@dfn{attributes}).
 
-An attribute is text @code{object} which contains a text string in the
-form @samp{@var{name}=@var{value}}.  Currently, the restrictions on
-attribute format that are enforced by the API are:
+Een attribuut is tekst @code{object} dat een tekst bevat in de vorm van
+@samp{@var{naam}=@var{waarde}}.  Tegenwoordig zijn de beperkingen op het attribuutformaat, die door de API bekrachtigd worden:
 
 @itemize @bullet
 @item
-Attribute @var{name}s:
+Attribuut @var{naam}s:
 
 @enumerate
 @item
-must contain at least one character;
+moet tenminste een karakter bevatten;
 @item
-must not contain a @samp{=} character (Unicode @code{U+003D});
+mag geen @samp{=} karakter bevatten (Unicode @code{U+003D});
 @item
-must not end with a space (@samp{ }, Unicode @code{U+0020}).
+Mag niet in een spatie eindigen (@samp{ }, Unicode @code{U+0020}).
 @end enumerate
 
 @item
-Attribute @var{value}s:
+Attribuut @var{waarde}s:
 
 @enumerate
 @item
-must contain at least one character;
+moet tenminste een karakter bevatten;
 @item
-must not begin with a space (@samp{ }, Unicode @code{U+0020}).
+moet niet met een spatie beginnen (@samp{ }, Unicode @code{U+0020}).
 @end enumerate
 @end itemize
 
-@strong{Note}: Due to assumptions made by some gEDA tools, it is
-@emph{strongly recommended} that you use attribute @var{name}s which
-contain only lower-case Latin characters, decimal digits, full stops
-@samp{.}  (@code{U+002E}), and hyphens @samp{-} (@code{U+002D}).
+@strong{Noot}: Door de aannames gedaan door sommige gEDA gereedschappen,
+is het @emph{ten zeerste aanbevolen} dat U attributen @var{name}n
+gebruikt die alleen kleine Latijnse letters bevatten, decimale cijfers,
+punt @samp{.}  (@code{U+002E}), en streep @samp{-} (@code{U+002D}).
 
-There are two types of attribute:
+Er zijn twee typen attributen:
 
-@cindex Attached attribute
-@emph{Attached attributes} are attribute text @code{object}s that are
-linked to another @code{object}.  To attach an attribute to another
-schematic element, both @code{object}s must be part of the same
-component or part of the same @code{object}.  For example, a
-@samp{netname=@var{name}} attribute attached to a net @code{object}
-can be used to give that net a specific name in netlist output, such
-as @samp{VCC} or @samp{GND}.
+@cindex Bevestigde attribuut
+@emph{Bevestigde attributen} zijn attribuut tekst @code{object}en die
+zijn gekoppeld aan een ander @code{object}.  Om een attribuut aan een
+ander schema element te bevestigen moeten beide @code{object}en deel
+zijn van dezelfde component of hetzelfde @code(object}.  Bijvoorbeeld,
+een @samp{netname=@var{name}} attribuut bevestigd aan een net
+@code{object} kan gebruikt worden om dat net een specifiek naam in de
+netlijstuitvoer te geven, zoals @samp{VCC} of @samp{GND}.
 
-@cindex Floating attribute
-@emph{Floating attributes} are attribute text @code{object}s that are
-not linked to another @code{object}.  These attributes affect the
-schematic or symbol that they're part of as a whole.  For example, a
-floating @samp{documentation=@var{url}} attribute in a symbol tells
-gschem's @strong{Help → Component Documentation} command how to find
-the component's data sheet.
+@cindex Zwevend attribuut
+@emph{Zwevende attributen} zijn attribuut tekst @code{object}en die niet
+gekoppeld zijn aan een ander @code{object}.  Deze attributen beïnvloeden
+het schema of symbool waarvan zij een deel van het geheel uitmaken.
+Bijvoorbeeld, een zwevend @samp{documentation=@var{url}} attribuut in
+een symbool verteld gschem's @strong{Help → Component Documentatie}
+commando waar de datasheet van de component gevonden kan worden.
 
 @node Coordinate system
 @section Coordinate system
