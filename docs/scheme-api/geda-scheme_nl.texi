@@ -362,68 +362,69 @@ zijn beschikbaar om in alle gEDA applikaties gebruikt te worden.
 * Systeem informatie::
 @end menu
 
-@node Core page functions
-@section Core page functions
+@node Kern pagina functies
+@section Kern pagina functies
 
-To use the functions described in this section, you will need to load
-the @code{(geda page)} module.
+Om de in deze sectie beschreven functies te gebruiken, zul je de
+@code{(geda pagina)} module moeten laden.
 
 @xref{Pages}.
 
 @defun page? obj
-Returns @samp{#t} if and only if @var{obj} is a @code{page}.
+Geeft @samp{#t} indien en alleen indien @var{obj} een @code{pagina} is.
 @end defun
 
 @defun active-pages
-Returns a list of all open @code{page}s.
+Retourneerd een lijst van alle open @code{pagina}s.
 @end defun
 
-@subsection Page creation, disposal and filenames
+@subsection Pagina creeren, vernietigen en bestandsnamen
 
-Every @code{page} is associated with a @emph{filename}.  The filename
-does not necessarily have to be a file which exists and/or is
-accessible in the filesystem.
+Elke @code{page} is geassocieerd met een @emph{bestandsnaam}.
+De bestandsnaam hoeft niet noodzakelijkerwijs een bestand te zijn dat
+bestaat en/of toegankelijk is in het bestandssysteem.
 
 @defun make-page filename
-Creates and returns a new, empty @code{page}, with the given
-string @var{filename}.
+Creeërt een geeft een nieuwe, lege @code{pagina}, met de gegeven string
+@var{filename}.
 @end defun
 
 @defun close-page! page
-Destroys @var{page}.  The returned value is undefined.
+Vernietigd @var{page}.  De geretourneerde waarde is onbepaald.
 
-@strong{Warning}: This function closes and destroys @var{page}
-immediately, regardless of whether the page has been modified since
-loading or saving, and without asking the user.
+@strong{Warning}: Deze functie sluit en vernietigd @var{page}
+onmiddelijk, ongeacht de pagina gewijzigd is sinds laden of opslaan, en
+zonder de gebruiker te vragen.
 @end defun
 
 @defun page-filename page
-Returns the filename associated with @var{page} as a string.
+Retourneerd de bestandsnaam geassocieerd met @var{page} als een string.
 @end defun
 
 @defun set-page-filename! page filename
-Sets the filename of @var{page} to @var{filename}.  Returns
+Stel de bestandsnaam van @var{page} in op @var{filename}.  Retourneerd
 @var{page}.
 @end defun
 
-@subsection Page serialisation
+@subsection Pagina serialisatie
 
-Pages can be converted to and from strings in the gEDA schematic file
-format.
+Paginas kunnen omgezet worden van en naar strings in het gEDA schema
+bestandformaat.
 
 @defun string->page filename string
-Parses @var{string}, which should be in the gEDA file format, to
-create a new @code{page}.  The initial filename for the new
-@code{page} is @var{filename}.
+Neemt @var{string} door, welke in gEDA bestandsformaat hoort te zijn, om
+een nieuwe @code{pagina} te creeëen.  De initieële bestandsnaam voor de
+nieuwe @code{pagina} is @var{filename}.
 
-@strong{Warning}: Due to missing functionality in the underlying C
-library, this @code{string->page} cannot currently report invalid
-syntax or other problems in the @var{string} passed.
+@strong{Waarschuwing}: Door ontbrekende functionaliteit in de
+onderliggende C bibliotheek, de huidige @code{string->page} kan geen
+ongeldige syntax of ander problemen in de ontvangen @var{string}
+rapporteren.
 @end defun
 
 @defun page->string page
-Returns a string representation of @var{page} in the gEDA file
-format.
+Retourneerd een string representatie van @var{page} in het gEDA
+bestandsformaat.
 @end defun
 
 @subsection Page contents
