@@ -427,75 +427,75 @@ Retourneerd een string representatie van @var{page} in het gEDA
 bestandsformaat.
 @end defun
 
-@subsection Page contents
+@subsection Pagina inhoud
 
-A schematic or symbol @code{page} is composed of a set of
-@code{object}s which determine both its graphical appearance and its
-electrical meaning.
+Een schema of symbool @code{pagina} is samengesteld uit een verzameling
+van @code{objecten} welke zowel de grafische representatie als wel de
+elektrische betekenis bepalen.
 
 @defun page-contents page
-Returns a list of the @code{object}s which make up @var{page}.  The
-list can be freely modified without changing the contents of
-@var{page}.
+Retourneerd een lijst van @code{objecten} welke een @var{page} vormen.
+De lijst kan vrijelijk aangepast worden zonder de inhoud van de
+@var{page} te wijzigen.
 @end defun
 
 @defun page-append! page objects...
-Appends zero or more @var{objects} to the contents of @var{page} in
-the order given.  Returns @var{page}.
+Voegt nul of meer @var{objects} toe aan de inhoud van de @var{page} in de
+aangegeven volgorde.  Retourneerd @var{page}.
 
-If any of the @var{objects} is already part of a @code{page} other
-than @var{page}, or is part of a component @code{object}, raises an
-@code{object-state} error.  Any of the @var{objects} that are already
-in the @var{page} are ignored.
+Als een van de @var{objects} al een deel van de @code{pagina} anders dan
+@var{page}, of een deel van een component @code{object}, levert dit een
+@code{object-status} fout op. Elk van de @var{objects} die al in
+@var{page} zijn worden genegeerd.
 @end defun
 
 @defun page-remove! page objects...
-Removes zero or more @var{objects} from the contents of @var{page}.
-Returns @var{page}.
+Verwijderd nul of meer @var{objects} uit de inhoud van @var{page}.
+Retourneerd @var{page}.
 
-Any @var{objects} that are not part of a @code{page} or component
-@code{object} are ignored.
+Elk van de @var{objects} die geen deel zijn van een @code{pagina} of
+component @code{object} worden genegeerd.
 
-An @samp{object-state} error will be thrown if any of the
-@var{objects} satisfies any of the following conditions:
+Een @samp{object-state} fout zal worden geworpen indien aan een van de
+@var{objects} voldoet aan een van de volgende condities:
 
 @itemize
 @item
-part of a @code{page} other than @var{page};
+deel van een @code{pagina} anders dan @var{page};
 @item
-part of component @code{object};
+deel van component @code{object};
 @item
-has attached attributes (@pxref{Attributes});
+heeft bevestigde attributen (@pxref{Attributes});
 @item
-is attached as an attribute.
+is bevestigd als een attribuut.
 @end itemize
 @end defun
 
 @defun object-page object
-Returns the @code{page} which contains @var{object} (either directly
-or indirectly), or @samp{#f} if @var{object} is not part of a
-@code{page}.
+Retourneerd de @code{pagina} welke @var{object} bevat (direct danwel
+indirect), of @samp{#f} als @var{object} geen deel is van een
+@code{pagina}.
 
-@strong{Note}: If the @var{object} argument to @code{object-page} is
-part of a component @code{object} which is itself part of a
-@code{page}, that @code{page} will be returned.
+@strong{Noot}: Als het @var{object} argument naar @code{object-pagina}
+deel is van een component @code{object} welke zelf deel is van een
+@code{pagina}, die @code{pagina} wordt geretourneerd.
 @end defun
 
-@subsection Page dirty flags
+@subsection Pagina vies vlaggen
 
-A @code{page} has a @emph{dirty flag} that is used to indicate to
-applications that the @code{page} has been modified since it was last
-loaded or saved.
+Een @code{pagina} heeft een @emph{vies vlag} die gebruikt wordt om
+applicaties aan te geven dat de @code{pagina} gewijzigd is sinds deze
+de laatste keer geladen of opgeslagen is.
 
 @defun page-dirty? page
-Returns @samp{#t} if the @var{page}'s page has been marked as dirty;
-otherwise, returns @samp{#f}.
+Retourneerd @samp{#t} als de @var{page}'s als vies gemerkt zijn; anders,
+retourneerd @samp{#f}.
 @end defun
 
 @defun set-page-dirty! page [state]
-Sets the dirty flag for @var{page}.  If @var{state} is @samp{#f},
-clears the dirty flag; otherwise, or if @var{state} is omitted, marks
-the page as dirty.  Returns @var{page}.
+Stel de vies vlag in voor @var{page}. Indien @var{state} gelijk is aan
+@samp{#f}, maak de vies vlag vrij; anders, of indien @var{state} is
+weggelaten, merk de pagina als vies.  Retourneerd @var{page}.
 @end defun
 
 @node Core object functions
