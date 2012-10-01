@@ -498,66 +498,67 @@ Stel de vies vlag in voor @var{page}. Indien @var{state} gelijk is aan
 weggelaten, merk de pagina als vies.  Retourneerd @var{page}.
 @end defun
 
-@node Core object functions
-@section Core object functions
+@node Kern object functies
+@section Kern object functies
 
-To use the functions described in this section, you will need to load
-the @code{(geda object)} module.
+Om de functies die beschreven worden in deze sectie te gebruiken, zul je
+de @code{(geda object)} module moeten laden.
 
 @menu
-* General object functions::
-* Lines::
-* Nets and buses::
-* Pins::
-* Boxes::
-* Circles::
-* Arcs::
-* Paths::
-* Pictures::
-* Text::
-* Components::
+* Algemene object functies::
+* Lijnen::
+* Netten en bussen::
+* Pennen::
+* Rechthoeken::
+* Cirkels::
+* Bogen::
+* Paden::
+* Afbeeldingen::
+* Tekst::
+* Componenten::
 @end menu
 
-@node General object functions
-@subsection General object functions
+@node Algemene object functies
+@subsection Algemene object functies
 
 @defun object? obj
-Returns @samp{#t} if and only if @var{obj} is an @code{object}.
+Retourneerd @samp{#t} als en alleen als @var{obj} een @code{object} is.
 @end defun
 
 @defun copy-object object
-Returns a deep copy of @var{object}.  The new @code{object} returned
-has no attached attributes, and is not part of a @code{page} or part
-of a component @code{object}.
+Retourneerd een diepe kopie van @var{object}.  Het nieuwe geretourneerde
+@code{object} heeft geen bevestigde attributen, en is geen deel van een
+@code{page} of deel van een component @code{object}.
 @end defun
 
 @defun object-component object
-Returns the component @code{object} that contains @var{object}, or
-@samp{#f} if @var{object} is not part of a component.
+Retourneerd de component @code{object} die @var{object} bevat, of
+@samp{#f} als @var{object} geen deel van een component is.
 @end defun
 
 @defun object-connections object
-Returns a list of other @code{object}s that are @emph{directly}
-connected to @var{object}.  If @code{object} is not included in a
-@code{page}, raises an @samp{object-state} error.  The connections
-reported are independent of inclusion in components.
+Retourneerd een lijst van andere @code{object}en die @emph{direct} zijn
+verbonden met @var{object}.  Als @code{object} niet is ingesloten in een
+@code{page}, hef dan een @samp{object-state} fout.  De gerapporteerde
+verbindingen zijn onafhankelijk van de insluitingen in componenten.
 
-For example, consider a page containing a net and a component, and the
-component contains a single pin.  If the connectable end of the pin
-intersects the net, then @code{(object-connections <net>)} will return
-a list containing the pin @code{object}, and @emph{not} the component.
+Bijvoorbeeld, beschouw een pagina die een net en een component bevat, en
+de component bevat een enkele pen.  Als het verbindbare uiteinde van de
+pen een net kruist, dan zal @code{(object-connections <net>)} een lijst
+retourneren die de pen @code{object}, en @emph{niet} de component,
+bevat.
 @end defun
 
 @menu
-* Object sub-types::
-* Object transformations::
-* Object bounds::
-* Object color::
-* Object fill and stroke::
+* Object sub-typen::
+* Object transformaties::
+* Object grenzen::
+* Object kleur::
+* Object vullen en strook::
 @end menu
 
-@node Object sub-types
-@subsubsection Object sub-types
+@node Object sub-typen
+@subsubsection Object sub-typen
 
 Schematic element @code{object}s come in several subtypes.
 
