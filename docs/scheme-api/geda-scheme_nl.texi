@@ -560,89 +560,89 @@ bevat.
 @node Object sub-typen
 @subsubsection Object sub-typen
 
-Schematic element @code{object}s come in several subtypes.
+Schema element @code{object}en komen in verscheidene subtypes.
 
 @defun object-type object
-Returns the sub-type of @var{object} as a symbol.  The subtype will be
-one of the following symbols:
+Retourneerd het sub-type van @var{object} als een symbool.  Het subtype zal een
+van de volgende symbolen zijn:
 
 @itemize
 @item
-@samp{arc}
+@samp{boog}
 @item
-@samp{box}
+@samp{rechthoek}
 @item
 @samp{bus}
 @item
-@samp{circle}
+@samp{cirkel}
 @item
-@samp{complex} (indicates a component @code{object})
+@samp{complex} (indiceert een component @code{object})
 @item
-@samp{line}
+@samp{lijn}
 @item
 @samp{net}
 @item
-@samp{path}
+@samp{pad}
 @item
-@samp{picture}
+@samp{afbeelding}
 @item
-@samp{pin}
+@samp{pen}
 @item
-@samp{text}
+@samp{tekst}
 @end itemize
 @end defun
 
 @defun object-type? object type
-Returns @samp{#t} if and only if @var{object} is an @code{object} and
-that its subtype is @var{type}, which should be a symbol.
+Retourneerd @samp{#t} als en alleen als @var{object} een @code{object} is en dat
+het subtype is een @var{type}, welke een symbool dient te zijn.
 @end defun
 
-@node Object transformations
-@subsubsection Object transformations
+@node Object transformaties
+@subsubsection Object transformaties
 
-Objects can be translated, rotated, or mirrored about a point.
+Objecten kunnen worden getransleerd, geroteerd, of gespiegeld om een punt.
 
 @defun translate-objects! vector [objects...]
-Translate @var{objects} by @var{vector}, a world coordinate distance
-in the form @samp{(x . y)}.  Returns a list of the modified
+Transleert @var{objects} om @var{vector}, een wereld coordinaat afstand in de
+vorm @samp{(x . y)}.  Retourneerd een lijst van de gemodificeerde
 @var{objects}.
 @end defun
 
 @defun rotate-objects! center angle [objects...]
-Translate @var{objects} anti-clockwise by @var{angle} about
-@var{center}, a world coordinate position in the form @samp{(x . y)}.
-@var{angle} must be an integer multiple of 90 degrees.  Returns a list
-of the modified @var{objects}.
+Transleert @var{objects} tegen de klok in met @var{angle} om @var{center}, een
+wereld coordinaat positie in de vorm @samp{(x . y)}.
+@var{angle} moet een geheel veelvoud van 90 graden zijn.  Retourneerd een lijst
+van de gewijzigde @var{objects}.
 @end defun
 
 @defun mirror-objects! x-offset [objects...]
-Mirror @var{objects} in the line @samp{x = @var{x-offset}}.  Returns a
-list of the modified @var{objects}.
+Spiegel @var{objects} in de lijn @samp{x = @var{x-offset}}.  Retourneerd een
+lijst met gewijzigde @var{objects}.
 @end defun
 
-@node Object bounds
-@subsubsection Object bounds
+@node Object grenzen
+@subsubsection Object grenzen
 
-The bounds of an object is the smallest bounding rectangle of the
-object, expressed in document coordinates (@pxref{Coordinate system}).
+De grenzen van een object zijn de kleinst omsluitende rechthoek van het object,
+uitgedrukt in document coordinaten (@pxref{Coordinate system}).
 
 @defun object-bounds objects...
-Returns the world coordinate bounding box containing all of the
-@var{objects} passed as arguments, or @samp{#f} if none of the
-@var{objects} have bounds (for example, this can occur if no
-@var{objects} are specified, or if they are all empty component
-@code{object}s).
+Retourneerd de wereld coordinaten van de omsluitende rechthoek die alle
+@var{objects} bevat die doorgegeven zijn als argumenten, of @samp{#f} als geen
+van de @var{objects} grenzen hebben (dit kan bijvoorbeeld gebeuren als geen
+@var{objects} gespecificeerd zijn, of als alle {object}en lege componenten
+zijn).
 
-@strong{Note}: @code{object-bounds} always returns the actual bounds
-of the @var{objects}, not the visible bounds.  This means that the bounds of
-invisible text is always included.
+@strong{Noot}: @code{object-bounds} retourneerd altijd de actuele grenzen van de
+@var{objects}, niet de zichtbare grenzen.  Dit betekend dat de grenzen van
+onzichtbare tekst altijd inbegrpen zijn.
 @end defun
 
 @defun fold-bounds bounds...
-Calculates the union of several sets of @var{bounds} (as returned by
-@code{object-bounds}).  If any of the @var{bounds} are @samp{#f}, they
-are skipped; if all of the @var{bounds} are @samp{#f}, @samp{#f} is
-returned.
+Berekend the samenvoeging van verscheidenen sets van @var{bounds} (zoals
+geretourneerd door @code{object-bounds}).  Als een van de @var{bounds} gelijk
+aan @samp{#f} is, dan wordt deze overgeslagen; als alle @var{bounds} gelijk zijn
+aan @samp{#f}, dan wordt @samp{#f} geretourneerd.
 @end defun
 
 @node Object color
