@@ -645,120 +645,122 @@ aan @samp{#f} is, dan wordt deze overgeslagen; als alle @var{bounds} gelijk zijn
 aan @samp{#f}, dan wordt @samp{#f} geretourneerd.
 @end defun
 
-@node Object color
-@subsubsection Object color
+@node Object kleur
+@subsubsection Object kleur
 
-Object colors in gEDA documents are specified as indices into a color
-map.  This allows users to specify the color map that suits them when
-viewing schematics and symbols.
+Object kleuren in gEDA documenten zijn gespecificeerd als indices naar een
+kleurenmap.  Dit staat gebruikers toe om een kleurenmap te specificeren die hun
+goed uitkomt bij het bekijken van schema's en symbolen.
 
 @defun object-color object
-Returns the integer color map index of the the color used to draw
+Retourneerd het geheel getal van de kleurmapindex van de gebruikte kleur om mee
+te tekenen
 @var{object}.
 @end defun
 
 @defun set-object-color! object color
-Sets the integer color map index for @var{object} to @var{color}.
-Returns @var{object}.
+Stel het gehele getal van de kleurmapindex van @var{object} in op @var{color}.
+Retourneerd @var{object}.
 @end defun
 
-@node Object fill and stroke
-@subsubsection Object fill and stroke
+@node Object arceren en strook
+@subsubsection Object vullen en strook
 
-Graphical object subtypes -- lines, boxes, circles, arcs and paths --
-are drawn with a stroke pattern that can be configured in detail.
+Grafisch object subtypen -- lijnen, rechthoeken, cirkels, bogen en paden --
+worden getekend met een strookpatroon dat in detail geconfigureerd kan worden.
 
 @defun object-stroke object
-Returns the stroke settings of the @var{object}, which must be a line,
-box, circle, arc or path @code{object}.  The return value is a list of
-parameters:
+Retourneerd de strook instelling van het @var{object}, welke een lijn,
+rechthoek, cirkel boog of pad @code{object} moet zijn.  De geretourneerde waarde
+is een lijst van parameters:
 
 @enumerate
 @item
-stroke width, as an integer number of world units
+strook breedte, als een geheel getal of wereldeenheden
 @item
-cap style, one of the symbols @code{none}, @code{square} or
+lijneindestijl, een van de symbolen @code{none}, @code{square} of
 @code{round}.
 @item
-dash style, one of the symbols @code{solid}, @code{dotted},
-@code{dashed}, @code{center} or @code{phantom}.
+streepstijl, een van de symbolen @code{solid}, @code{dotted},
+@code{dashed}, @code{center} of @code{phantom}.
 @item
-up to two dash parameters, depending on the dash style:
+tot aan twee streepparameters, afhankelijk van de streepstijl:
 @itemize
 @item
-for solid lines, no parameters;
+voor getrokken lijnen, geen parameters;
 @item
-for dotted lines, dot spacing;
+voor stippellijnen, ruimte tussen stippen;
 @item
-for other styles, dot/dash spacing and dash length.
+voor andere stijlen, stip/streep tussenruimte en streeplengte.
 @end itemize
 @end enumerate
 @end defun
 
 @defun set-object-stroke! object width cap dash [dash-space [dash-length]]
-Set the stroke settings of the @var{object}, which must be a line,
-box, circle, arc or path @code{object}.  The arguments are the same as
-the contents of the list returned by @code{object-stroke}.  Returns
+Stel de strook instellingen van het @var{object} in, welke een lijn, rechthoek,
+cirkel, boog of pad @code{object} moet zijn. De argumenten zijn dezelfde als de
+inhoud van de lijst geretourneerd door @code{object-stroke}. Retourneerd
 @var{object}.
 @end defun
 
 @defun object-stroke-width object
-Returns the integer stroke width of @var{object}, which must be a
-line, box, circle, arc or path @code{object}.
+Retourneerd het gehele getal met de strookbreedte van @var{object}, welke een
+lijn, rechthoek, cirkel, boog of pad @code{object} moet zijn.
 @end defun
 
 @defun object-stroke-cap object
-Returns the stroke cap style of @var{object}, which must be a line,
-box, circle, arc or path @code{object}.  The returned value is one of
-the symbols @code{none}, @code{square} or @code{round}.
+Retourneerd de strook lijneindestijl van @var{object}, welke een
+lijn, rechthoek, cirkel, boog of pad @code{object} moet zijn.  De geretourneerde
+waarde is een van de symbolen @code{none}, @code{square} of @code{round}.
 @end defun
 
 @defun object-stroke-dash object
-Returns the dash style of @var{object}, which must be a line, box,
-circle, arc or path @code{object}.  The return value is a list of
-between one and three parameters:
+Retourneerd de streepstijl van een @var{object}, welke een
+lijn, rechthoek, cirkel, boog of pad @code{object} moet zijn. De geretourneerde
+waarde is een lijst van een tot drie parameters:
 
 @enumerate
 @item
-dash style, one of the symbols @code{solid}, @code{dotted},
-@code{dashed}, @code{center} or @code{phantom}.
+streepstijl, een van de symbolen @code{solid}, @code{dotted},
+@code{dashed}, @code{center} of @code{phantom}.
 @item
-for styles other than @code{solid}, dot/dash spacing;
+voor stijlen anders dan @code{solid}, stip/streep tussenruimte;
 @item
-for @code{dashed}, @code{center} and @code{phantom}, dash length.
+voor @code{dashed}, @code{center} en @code{phantom}, streeplengte.
 @end enumerate
 @end defun
 
-Some types of @code{object} -- boxes, circles and paths -- can have
-their interiors filled with a variety of patterns.
+Sommige typen van @code{object} -- rechthoeken, cirkels en paden -- kunnen hun
+interieur gearceerd hebben met een veelzijdigheid aan patronen.
 
 @defun object-fill object
-Returns the fill settings of @var{object}, which must be a box, circle
-or path @code{object}.  The return value is a list of one to six
-parameters:
+Retourneerd de arceerinstelling van @var{object}, welke een
+rechthoek, cirkel of pad @code{object} moet zijn. De geretourneerde waarde is
+een lijst van een tot zes parameters:
 
 @enumerate
 @item
-fill style, one of the symbols @code{hollow}, @code{solid},
-@code{mesh} or @code{hatch};
+arceerstijl, een van de symbolen @code{hollow}, @code{solid},
+@code{mesh} of @code{hatch};
 @item
-up to five fill parameters, depending on fill style:
+tot en met vijf arceerparameters, afhankelijk van de arceerstijl:
 @enumerate
 @item
-none for @code{hollow} or @code{solid} fills;
+geen voor @code{hollow} of @code{solid} arcering;
 @item
-line width, line angle (in degrees) and line spacing for @code{hatch} fills;
+lijnbreedte, lijnhoek (in graden) en lijntussenruimte voor @code{hatch} arcering;
 @item
-line width, first angle and spacing, and second angle and spacing for
-@code{mesh} fills.
+Lijnbreedte, starthoek en tussenruimte, en volgende hoek en tussenruimte voor
+@code{mesh} arceringen.
 @end enumerate
 @end enumerate
 @end defun
 
 @defun set-object-fill! object fill-type . fill-args
-Sets the fill settings of @var{object}, which must be a box, circle or
-path @code{object}.  The arguments are the same as the contents of the
-list returned by @code{object-fill}.  Returns @var{object}.
+Stelt de arcering instellingen in van @var{object},  welke een
+rechthoek, cirkel of pad @code{object} moet zijn. De argumenten zijn dezelfde
+als de inhoud van de geretourneerde lijst door @code{object-fill}. Retourneerd
+@var{object}.
 @end defun
 
 @node Lines
